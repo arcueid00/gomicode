@@ -57,6 +57,23 @@ class Actress : Record
     }
 }
 
+class MediaActor : Record
+{
+    var content_id : String? = ""
+    var actor_id : String? = ""
+    
+    required init(row : Row)
+    {
+        self.content_id = row["content_id"]
+        self.actor_id = row["actor_id"]
+        super.init(row:row)
+    }
+    
+    override static var databaseTableName : String{
+        return "MediaActor"
+    }
+}
+
 struct AppDatabase{
     static func openDatabase( atPath path : String ) throws ->DatabaseQueue{
         
